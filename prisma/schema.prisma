@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  email            String    @unique
+  name             String
+  password         String
+  type             Type      
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  listings         Listing[]
+  messagesSent     Message[] @relation("Sender")
+  messagesReceived Message[] @relation("Receiver")
+}
+
+model Listing {
+  id       Int      @id @default(autoincrement())
+  seller   User     @relation(fields: [sellerId], references: [id])
+  sellerId Int
+  brand    Int
+  model    Int
+  year     Int
+  price    Int
+  mileage  Int
+  category Category
+
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  sender     User     @relation("Sender", fields: [senderId], references: [id])
+  senderId   Int
+  receiver   User     @relation("Receiver", fields: [receiverId], references: [id])
+  receiverId Int
+  message    String
+  Listing    Listing? @relation(fields: [listingId], references: [id])
+  listingId  Int?
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Brand {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model Model {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+enum Category {
+  CAR
+  TRUCK
+  VAN
+  MOTORCYCLE
+}
+
+enum Type {
+  PERSONAL
+  STORE
+}
