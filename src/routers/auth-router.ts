@@ -7,6 +7,6 @@ const authRouter = Router();
 
 authRouter
 	.post('/signup', validateSignUp, authController.createUser)
-	.post('/signin', validateSignIn, authController.createUser);
+	.post('/signin', validateSignIn, authController.signIn);
 
 export {authRouter};

@@ -1,4 +1,5 @@
 import { signUpSchema } from "@/schema/signup-schema";
+import { signInSchema } from "@/schema/signin-schema";
 import { Request, Response, NextFunction } from "express";
 import { func } from "joi";
 
@@ -19,7 +20,7 @@ export function validateSignUp(req: Request, res: Response, next: NextFunction) 
 
 export function validateSignIn(req: Request, res: Response, next: NextFunction) {
 	try {
-		const { error } = signUpSchema.validate(req.body);
+		const { error } = signInSchema.validate(req.body);
 		if (error) {
 			throw {
 				status: 400,
