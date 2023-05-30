@@ -19,7 +19,3 @@ export async function createUser(email: string, password: string, name: string, 
 		}
 	});
 }
-
-export async function createSession() {
-
-}
