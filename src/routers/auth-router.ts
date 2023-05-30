@@ -1,11 +1,12 @@
 import * as authController from '@/controllers/auth-controller';
+import { validateSignIn, validateSignUp } from '@/middlewares/validate-auth';
 
 import { Router } from 'express';
 
 const authRouter = Router();
 
 authRouter
-	.post('/signup', authController.createUser)
-	.post('/signin', authController.createUser);
+	.post('/signup', validateSignUp, authController.createUser)
+	.post('/signin', validateSignIn, authController.createUser);
 
 export {authRouter};
