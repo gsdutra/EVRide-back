@@ -19,8 +19,8 @@ export async function getModelsByBrand(brandId: number) {
 	return listingRepository.getModelsByBrand(brandId);
 }
 
-export async function createListing(listing: Omit<Listing, 'id' | 'createdAt' | 'updatedAt'>) {
-	return listingRepository.createListing(listing);
+export async function createListing(userId: number, listing: Omit<Listing, 'id' | 'createdAt' | 'updatedAt'>) {
+	return listingRepository.createListing(userId, listing);
 }
 
 export async function updateListing(listing: Omit<Listing, 'createdAt' | 'updatedAt'>) {

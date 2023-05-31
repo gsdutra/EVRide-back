@@ -43,9 +43,10 @@ export async function getModelsByBrand(brandId: number) {
 	});
 }
 
-export async function createListing(listing: Omit<Listing, 'id' | 'createdAt' | 'updatedAt'>) {
+export async function createListing(sellerId: number, listing: Omit<Listing, 'id' | 'sellerId' | 'createdAt' | 'updatedAt'>) {
 	return prisma.listing.create({
 		data: {
+			sellerId,
 			...listing
 		}
 	});

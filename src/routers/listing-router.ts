@@ -1,5 +1,6 @@
 import * as listingController from '@/controllers/listing-controller'
 import { validateListing } from '@/middlewares/validate-listing'
+import { validateToken } from '@/middlewares/validate-jwt-token'
 
 import { Router } from 'express'
 
@@ -9,7 +10,7 @@ listingRouter
 	.get('/:id', listingController.getListingById)
 	.get('/brands', listingController.getBrands)
 	.get('/brands/:brandId/models', listingController.getModelsByBrand)
-	.post('/', validateListing, listingController.createListing)
-	.put('/', validateListing, listingController.updateListing)
+	.post('/', validateToken, validateListing, listingController.createListing)
+	.put('/', validateToken, validateListing, listingController.updateListing)
 
 export { listingRouter }
