@@ -1,7 +1,6 @@
 import { signUpSchema } from "@/schema/signup-schema";
 import { signInSchema } from "@/schema/signin-schema";
 import { Request, Response, NextFunction } from "express";
-import { func } from "joi";
 
 export function validateSignUp(req: Request, res: Response, next: NextFunction) {
 	try {

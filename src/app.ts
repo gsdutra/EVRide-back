@@ -9,6 +9,7 @@ app
 	.use(cors())
 	.use(express.json())
 	.use('/health', (req: Request, res: Response)=>res.send('OK'))
-	.use('/auth', r.authRouter);
+	.use('/auth', r.authRouter)
+	.use('/listings', r.listingRouter);
 
 export default app;
