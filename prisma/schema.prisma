@@ -37,7 +37,7 @@ model Listing {
   mileage      Int
   plateEnding  Int
   acceptsTrade Boolean
-  description  Text
+  description  String
 
   state String
   city  String
