@@ -3,8 +3,8 @@ import { Request, Response } from 'express';
 
 export async function createUser(req: Request, res: Response) {
 	try {
-		const { email, password, name, type } = req.body;
-		await authSerivce.createUser(email, password, name, type);
+		const { email, password, name, type, pictureUrl } = req.body;
+		await authSerivce.createUser(email, password, name, type, pictureUrl);
 		res.status(201).send('Registered');
 	} catch (error) {
 		res.status(error.status || 500).send(error.message || 'Internal Server Error');

@@ -9,13 +9,14 @@ export async function verifyUser(email: string) {
 	});
 }
 
-export async function createUser(email: string, password: string, name: string, type: string) {
+export async function createUser(email: string, password: string, name: string, type: string, imageUrl: string) {
 	return prisma.user.create({
 		data: {
 			email,
 			password,
 			name,
-			type: type === 'personal' ? Type.PERSONAL : Type.STORE
+			type: type === 'personal' ? Type.PERSONAL : Type.STORE,
+			imageUrl
 		}
 	});
 }

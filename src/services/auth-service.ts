@@ -3,13 +3,13 @@ import jwt from 'jsonwebtoken';
 
 import * as authRepository from '@/repositories/auth-repository';
 
-export async function createUser(email: string, password: string, name: string, type: string) {
+export async function createUser(email: string, password: string, name: string, type: string, pictureUrl: string) {
 	const verifyDuplicateUser = await authRepository.verifyUser(email);
 	if (verifyDuplicateUser) throw { status: 409, message: 'User already exists' };
 
 	const hashedPassword = await bcrypt.hash(password, 10);
 
-	return authRepository.createUser(email, hashedPassword, name, type);
+	return authRepository.createUser(email, hashedPassword, name, type, pictureUrl);
 }
 
 export async function signIn(email: string, password: string) {
