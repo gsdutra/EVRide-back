@@ -10,6 +10,7 @@ app
 	.use(express.json())
 	.use('/health', (req: Request, res: Response)=>res.send('OK'))
 	.use('/auth', r.authRouter)
+	.use('/user', r.userRouter)
 	.use('/listings', r.listingRouter);
 
 export default app;
