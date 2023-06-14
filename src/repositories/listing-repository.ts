@@ -43,6 +43,40 @@ export async function getModelsByBrand(brandId: number) {
 	});
 }
 
+export async function addBrand(brand: string) {
+	return prisma.brand.create({
+		data: {
+			name: brand
+		}
+	});
+}
+
+export async function addModel(model: string, brandId: number) {
+	return prisma.model.create({
+		data: {
+			name: model,
+			brandId
+		}
+	});
+}
+
+export async function verifyBrand(brand: string) {
+	return prisma.brand.findFirst({
+		where: {
+			name: brand
+		}
+	});
+}
+
+export async function verifyModel(model: string, brandId: number) {
+	return prisma.model.findFirst({
+		where: {
+			name: model,
+			brandId
+		}
+	});
+}
+
 export async function createListing(sellerId: number, listing: Omit<Listing, 'id' | 'sellerId' | 'createdAt' | 'updatedAt'>) {
 	return prisma.listing.create({
 		data: {
@@ -59,6 +93,15 @@ export async function updateListing(listing: Omit<Listing, 'createdAt' | 'update
 		},
 		data: {
 			...listing
+		}
+	});
+}
+
+export async function addImage(listingId: number, imageUrl: string) {
+	return prisma.listingImage.create({
+		data: {
+			listingId,
+			url: imageUrl
 		}
 	});
 }

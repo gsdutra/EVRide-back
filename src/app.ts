@@ -11,6 +11,6 @@ app
 	.use('/health', (req: Request, res: Response)=>res.send('OK'))
 	.use('/auth', r.authRouter)
 	.use('/user', r.userRouter)
-	.use('/listings', r.listingRouter);
+	.use('/listing', r.listingRouter);
 
 export default app;

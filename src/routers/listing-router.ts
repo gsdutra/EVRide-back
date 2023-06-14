@@ -7,9 +7,11 @@ import { Router } from 'express'
 const listingRouter = Router()
 
 listingRouter
-	.get('/:id', listingController.getListingById)
+	.get('/get/:id', listingController.getListingById)
 	.get('/brands', listingController.getBrands)
-	.get('/brands/:brandId/models', listingController.getModelsByBrand)
+	.get('/models/:brandId', listingController.getModelsByBrand)
+	.post('/brands', validateToken, listingController.addBrand)
+	.post('/models', validateToken, listingController.addModel)
 	.post('/', validateToken, validateListing, listingController.createListing)
 	.put('/', validateToken, validateListing, listingController.updateListing)
 
