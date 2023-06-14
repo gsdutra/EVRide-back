@@ -8,6 +8,7 @@ const listingRouter = Router()
 
 listingRouter
 	.get('/get/:id', listingController.getListingById)
+	.get('/', listingController.getListings)
 	.get('/brands', listingController.getBrands)
 	.get('/models/:brandId', listingController.getModelsByBrand)
 	.post('/brands', validateToken, listingController.addBrand)

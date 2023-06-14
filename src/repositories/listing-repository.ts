@@ -28,7 +28,15 @@ export async function getListings(listing: SearchListing) {
 	if (listing.state) where.state = listing.state
 	if (listing.city) where.city = listing.city
 
-	return prisma.listing.findMany({ where });
+	return prisma.listing.findMany(
+		{ where,
+			include: {
+				brand: true,
+				model: true,
+				images: true
+			}
+		}
+		);
 }
 
 export async function getBrands() {

@@ -1,8 +1,8 @@
 import * as listingRepository from '@/repositories/listing-repository';
 import { Listing } from '@prisma/client'
 
-export async function getListings(id: number) {
-	//return listingRepository.getListings(); //TO-DO
+export async function getListings(listingData: any) {
+	return listingRepository.getListings(listingData);
 }
 
 export async function getListingById(id: number) {

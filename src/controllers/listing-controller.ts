@@ -11,6 +11,15 @@ export async function getListingById(req: Request, res: Response) {
 	}
 }
 
+export async function getListings(req: Request, res: Response) {
+	try {
+		const listings = await listingService.getListings(req.query);
+		res.status(200).send(listings);
+	} catch (error) {
+		res.status(error.status || 500).send(error.message || 'Internal Server Error');
+	}
+}
+
 export async function getBrands(req: Request, res: Response) {
 	try {
 		const brands = await listingService.getBrands();
