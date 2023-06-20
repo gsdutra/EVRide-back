@@ -6,6 +6,11 @@ export async function getListingById(id: number) {
 	return prisma.listing.findUnique({
 		where: {
 			id
+		},
+		include: {
+			brand: true,
+			model: true,
+			images: true
 		}
 	});
 }

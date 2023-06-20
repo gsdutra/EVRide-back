@@ -6,6 +6,7 @@ export async function getListings(listingData: any) {
 }
 
 export async function getListingById(id: number) {
+	if (!id) throw { status: 400, message: 'Id is required' };
 	const listing = await listingRepository.getListingById(id);
 	if (!listing) throw { status: 404, message: 'Listing not found' };
 	return listing;
