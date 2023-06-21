@@ -22,6 +22,8 @@ model User {
   listings         Listing[]
   messagesSent     Message[] @relation("Sender")
   messagesReceived Message[] @relation("Receiver")
+  chatsAsSeller    Chat[] @relation("Seller")
+  chatsAsBuyer     Chat[] @relation("Buyer")
 }
 
 model Listing {
@@ -46,7 +48,7 @@ model Listing {
   category Category
 
   images    ListingImage[]
-  messages  Message[]
+  chats     Chat[]
   createdAt DateTime       @default(now())
   updatedAt DateTime       @updatedAt
 }
@@ -65,12 +67,21 @@ model Message {
   receiver   User     @relation("Receiver", fields: [receiverId], references: [id])
   receiverId Int
   message    String
-  Listing    Listing? @relation(fields: [listingId], references: [id])
-  listingId  Int?
+  chatId     Int
+  chat       Chat     @relation(fields: [chatId], references: [id])
 }
 
 model Chat {
   id        Int      @id @default(autoincrement())
+  listingId Int
+  listing   Listing @relation(fields: [listingId], references: [id])
+  messages  Message[]
+
+  sellerId  Int
+  seller    User     @relation("Seller", fields: [sellerId], references: [id])
+  buyerId   Int
+  buyer     User     @relation("Buyer", fields: [buyerId], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
