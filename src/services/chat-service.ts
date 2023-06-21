@@ -1,6 +1,7 @@
 import * as chatRepository from '../repositories/chat-repository';
 
 export async function createChat(listingId: number, userId: number, buyerId: number) {
+	if (userId === buyerId) throw { status: 400, message: 'Cannot create chat with yourself' };
 	const verifyChat = await chatRepository.verifyChat(listingId, userId, buyerId);
 	if (verifyChat) return verifyChat.id;
 	const chat = await chatRepository.createChat(listingId, userId, buyerId);
