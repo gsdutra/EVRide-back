@@ -36,9 +36,9 @@ export async function createMessage(req: Request, res: Response) {
 export async function createChat(req: Request, res: Response) {
 	try {
 		const {userId} = res.locals;
-		const {listingId, buyerId} = req.body;
-		const response = await chatService.createChat(Number(listingId), userId, Number(buyerId));
-		res.status(201).send(response);
+		const {listingId, sellerId} = req.body;
+		const response = await chatService.createChat(Number(listingId), userId, Number(sellerId));
+		res.status(201).send({chatId: response});
 	} catch (error) {
 		res.status(error.status || 500).send(error.message || 'Internal Server Error');
 	}

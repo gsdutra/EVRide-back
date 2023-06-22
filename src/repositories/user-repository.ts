@@ -6,6 +6,7 @@ export async function getUserData(id: number) {
 			id,
 		},
 		select: {
+			id: true,
 			email: true,
 			name: true,
 			imageUrl: true,

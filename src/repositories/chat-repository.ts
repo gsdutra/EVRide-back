@@ -8,6 +8,9 @@ export async function getChatsByUserIdAsSeller(userId: number) {
 		include: {
 			listing: true,
 			buyer: true
+		},
+		orderBy: {
+			updatedAt: 'desc'
 		}
 	});
 }
@@ -20,8 +23,35 @@ export async function getChatsByUserIdAsBuyer(userId: number) {
 		include: {
 			listing: true,
 			seller: true
+		},
+		orderBy: {
+			updatedAt: 'desc'
 		}
 	});
+}
+
+export async function getChatsByUserId(userId: number) {
+	return prisma.chat.findMany({
+		where: {
+			OR: [
+				{buyerId: userId},
+				{sellerId: userId}
+			]
+		},
+		include: {
+			listing: {
+				include: {
+					brand: true,
+					model: true,
+				}
+			},
+			buyer: true,
+			seller: true
+		},
+		orderBy: {
+			updatedAt: 'desc'
+		}
+	})
 }
 
 export async function getChatById(id: number) {
@@ -38,7 +68,31 @@ export async function getMessagesByChatId(id: number) {
 			id,
 		},
 		include: {
-			messages: true
+			messages: {
+				orderBy: {
+					createdAt: 'asc'
+				}
+			},
+			buyer: {
+				select: {
+					id: true,
+					name: true,
+					imageUrl: true
+				},
+			},
+			seller: {
+				select: {
+					id: true,
+					name: true,
+					imageUrl: true
+				}
+			},
+			listing: {
+				include: {
+					brand: true,
+					model: true,
+				}
+			}
 		}
 	});
 }
@@ -63,7 +117,7 @@ export async function updateChat(chatId: number) {
 	});
 }
 
-export async function createChat(listingId: number, sellerId: number, buyerId: number) {
+export async function createChat(listingId: number, buyerId: number, sellerId: number) {
 	return prisma.chat.create({
 		data: {
 			listingId,
@@ -73,7 +127,7 @@ export async function createChat(listingId: number, sellerId: number, buyerId: n
 	});
 }
 
-export async function verifyChat(listingId: number, sellerId: number, buyerId: number) {
+export async function verifyChat(listingId: number, buyerId: number, sellerId: number) {
 	return prisma.chat.findFirst({
 		where: {
 			listingId,
