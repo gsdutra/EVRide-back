@@ -25,8 +25,8 @@ export async function getChatsByUserId(userId: number) {
 			obj.userImage = chat.seller.imageUrl;
 		}
 		if (chat.sellerId === userId) {
-			obj.userName = chat.seller.name;
-			obj.userImage = chat.seller.imageUrl;
+			obj.userName = chat.buyer.name;
+			obj.userImage = chat.buyer.imageUrl;
 		}
 		treatedChats.push(obj);
 	});

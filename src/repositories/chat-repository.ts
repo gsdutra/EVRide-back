@@ -113,7 +113,9 @@ export async function updateChat(chatId: number) {
 		where: {
 			id: chatId
 		},
-		data: {}
+		data: {
+			updatedAt: new Date()
+		}
 	});
 }
 
