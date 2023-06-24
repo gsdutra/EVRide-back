@@ -1,4 +1,4 @@
-import prisma from '@/config/database';
+import prisma from '../config/database';
 import { User, Type } from '@prisma/client';
 
 export async function verifyUser(email: string) {

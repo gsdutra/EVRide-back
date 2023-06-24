@@ -1,4 +1,4 @@
-import * as listingRepository from '@/repositories/listing-repository';
+import * as listingRepository from '../repositories/listing-repository';
 import { Listing } from '@prisma/client'
 
 export async function getListings(listingData: any) {

@@ -1,6 +1,6 @@
-import * as listingController from '@/controllers/listing-controller'
-import { validateListing } from '@/middlewares/validate-listing'
-import { validateToken } from '@/middlewares/validate-jwt-token'
+import * as listingController from '../controllers/listing-controller'
+import { validateListing } from '../middlewares/validate-listing'
+import { validateToken } from '../middlewares/validate-jwt-token'
 
 import { Router } from 'express'
 

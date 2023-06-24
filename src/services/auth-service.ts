@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import * as authRepository from '@/repositories/auth-repository';
+import * as authRepository from '../repositories/auth-repository';
 
 export async function createUser(email: string, password: string, name: string, type: string, pictureUrl: string) {
 	const verifyDuplicateUser = await authRepository.verifyUser(email);

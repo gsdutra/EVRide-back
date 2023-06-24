@@ -1,5 +1,5 @@
-import { signUpSchema } from "@/schema/signup-schema";
-import { signInSchema } from "@/schema/signin-schema";
+import { signUpSchema } from "../schema/signup-schema";
+import { signInSchema } from "../schema/signin-schema";
 import { Request, Response, NextFunction } from "express";
 
 export function validateSignUp(req: Request, res: Response, next: NextFunction) {

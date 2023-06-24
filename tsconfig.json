@@ -11,7 +11,7 @@
     "rootDirs": ["src", "tests"],
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"]
     },
     "plugins": [
       {

@@ -1,6 +1,6 @@
-import prisma from '@/config/database';
+import prisma from '../config/database';
 import {Fuel, Category, Listing} from '@prisma/client';
-import { SearchListing } from '@/types';
+import { SearchListing } from '../types';
 
 export async function getListingById(id: number) {
 	return prisma.listing.findUnique({

@@ -1,5 +1,5 @@
-import * as authController from '@/controllers/auth-controller';
-import { validateSignIn, validateSignUp } from '@/middlewares/validate-auth';
+import * as authController from '../controllers/auth-controller';
+import { validateSignIn, validateSignUp } from '../middlewares/validate-auth';
 
 import { Router } from 'express';
 

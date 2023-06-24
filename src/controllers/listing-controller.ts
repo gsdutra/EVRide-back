@@ -1,4 +1,4 @@
-import * as listingService from '@/services/listing-service';
+import * as listingService from '../services/listing-service';
 import { Request, Response } from 'express';
 
 export async function getListingById(req: Request, res: Response) {

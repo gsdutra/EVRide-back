@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as userRepository from '@/repositories/user-repository'
+import * as userRepository from '../repositories/user-repository'
 
 export async function getUserData(req: Request, res: Response) {
 	try {

@@ -1,4 +1,4 @@
-import prisma from "@/config/database";
+import prisma from "../config/database";
 
 export async function getUserData(id: number) {
 	return prisma.user.findUnique({

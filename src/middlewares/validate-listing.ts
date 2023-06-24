@@ -1,4 +1,4 @@
-import {listingSchema} from '@/schema/listing-schema';
+import {listingSchema} from '../schema/listing-schema';
 import { Request, Response, NextFunction } from "express";
 
 export function validateListing(req: Request, res: Response, next: NextFunction) {

@@ -1,5 +1,5 @@
-import * as chatController from '@/controllers/chat-controller'
-import { validateToken } from '@/middlewares/validate-jwt-token'
+import * as chatController from '../controllers/chat-controller'
+import { validateToken } from '../middlewares/validate-jwt-token'
 
 import { Router } from 'express'
 
