@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "commonjs",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "outDir": "dist",
     "noImplicitAny": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "rootDirs": ["src", "tests"],
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["*"]
     },
     "plugins": [
       {
@@ -18,5 +19,8 @@
       }
     ]
   },
-  "include": ["src", "tests"]
+  "include": ["src", "tests"],
+  "ts-node": {
+    "esm": true
+  }
 }
